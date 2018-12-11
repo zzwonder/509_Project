@@ -5,15 +5,21 @@ set<int> Active_clauses;
 list<int> Unit_list;
 bool fail,timeout;
 ofstream logout;
+double run_time=0;
+int NumofAssign = 0;
 void dbll_mainloop() {
-//	logout << "Number of clauses: " << Dsize.nclauses << endl;
 	for (int i = 1; i <= Dsize.nclauses; i++) {
 		Active_clauses.insert(i);
 		insert_unit_clause(i);
 	}
 	fail = timeout = 0;
+	DWORD timeBegin  = GetTickCount();
 	while (!Active_clauses.empty()) {
-//		cout << "here" << endl;
+		if (GetTickCount() - timeBegin >= 1000*TIMEOUT) {
+			timeout = 1;
+			return;
+		}
+	//	cout << "here" << endl;
 		if (!unit_propagation())
 		{
 			int choice = back_track();
@@ -30,8 +36,10 @@ void dbll_mainloop() {
 		}
 		if (Active_clauses.empty()) break;
 		int choice = pick_variable();
+		NumofAssign++;
 		push_assignment(choice,ASSIGNED,1);
 	}
+	run_time = (GetTickCount() - timeBegin)*1.0/1000;
 }
 
 int find_unit_variable(int front) {
@@ -144,7 +152,7 @@ int pick_variable() {
 	return two_occur();
 #endif // TWO_OCCUR
 
-#ifdef WEIGHT
+#if defined(WEIGHT) || defined(WEIGHT_REV)  || defined(COMB_WEIGHT)
 	return weight_pick();
 #endif
 	return 0;
@@ -152,6 +160,7 @@ int pick_variable() {
 }
 
 bool push_assignment(int choice,int assignedtype,bool canflip) {
+	
 	bool success = 1;
 	int var = abs(choice);
 	if (assignedtype == ASSIGNED) logout << "pick value:";

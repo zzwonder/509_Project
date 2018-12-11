@@ -1,2 +1,23 @@
-﻿  main.cpp
+﻿  stdafx.cpp
+  variable_pick.cpp
+d:\zzw\509_project\509_project\variable_pick.cpp(9): warning C4244: “初始化”: 从“time_t”转换到“unsigned int”，可能丢失数据
+d:\zzw\509_project\509_project\variable_pick.cpp(34): warning C4018: “<”: 有符号/无符号不匹配
+d:\zzw\509_project\509_project\variable_pick.cpp(72): warning C4018: “<”: 有符号/无符号不匹配
+  puzzle.cpp
+d:\zzw\509_project\509_project\puzzle.cpp(20): warning C4018: “<”: 有符号/无符号不匹配
+d:\zzw\509_project\509_project\puzzle.cpp(25): warning C4018: “<”: 有符号/无符号不匹配
+  output.cpp
+d:\zzw\509_project\509_project\output.cpp(48): warning C4244: “初始化”: 从“time_t”转换到“unsigned int”，可能丢失数据
+d:\zzw\509_project\509_project\output.cpp(50): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  main.cpp
+  input.cpp
+  dbll_main.cpp
+d:\zzw\509_project\509_project\dbll_main.cpp(46): warning C4018: “<”: 有符号/无符号不匹配
+d:\zzw\509_project\509_project\dbll_main.cpp(56): warning C4018: “<”: 有符号/无符号不匹配
+d:\zzw\509_project\509_project\dbll_main.cpp(103): warning C4018: “<”: 有符号/无符号不匹配
+d:\zzw\509_project\509_project\dbll_main.cpp(113): warning C4018: “<”: 有符号/无符号不匹配
+d:\zzw\509_project\509_project\dbll_main.cpp(174): warning C4018: “<”: 有符号/无符号不匹配
+  benchmarks.cpp
+d:\zzw\509_project\509_project\benchmarks.cpp(22): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  正在生成代码...
   509_Project.vcxproj -> D:\zzw\509_Project\Debug\509_Project.exe

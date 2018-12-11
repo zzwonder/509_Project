@@ -31,9 +31,9 @@ void random_benchmarks(int n, int c) {
 	}
 }
 void create_random_benchmarks() {
-	for (int n = 100; n <= 400; n = n + 100) {
-		for (int a = 0; a <= 15; a++) {
-			int c = (3 + 0.2*a) * n;
+	for (int n = 100; n < 101; n = n + 20) {
+		for (int a = 8; a <= 8; a++) {
+			int c = 3 * n+20*a;
 			random_benchmarks(n, c);
 		}
 	}

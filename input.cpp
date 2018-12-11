@@ -3,11 +3,12 @@ using namespace std;
 struct datasize Dsize;
 struct variable Vars[MAXNV];
 struct clause Clauses[MAXNC];
-void read_case(string firename) {
+void read_case(string filename) {
 	ifstream fin;
-	fin.open(firename);
+	fin.open(filename);
+	cout << "open: " << filename << endl;
 	if (!fin) {
-		cout << "fail to open the file" << endl;
+		cout << "fail to open " <<filename<< endl;
 	}
 	char command;
 	int snum = 0;
