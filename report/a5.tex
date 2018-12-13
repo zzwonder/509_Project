@@ -1,0 +1,546 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\headheight 0pt
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{xcolor}
+\setlength{\textwidth}{6.25in}          
+\setlength{\oddsidemargin}{0in}   
+\setlength{\evensidemargin}{.25in}  
+\newcommand{\rarrow}{\rightarrow}
+\newcommand{\darrow}{\leftrightarrow}
+\newcommand{\logequiv}{{\models =\!\!\!|}}
+\renewcommand{\phi}{\varphi}
+\begin{document}
+	\pagestyle{empty}
+	
+	\begin{center}
+		{\Large COMP 409\\
+			Assignment No. 5}\\
+		\bf{Caihua Li and Zhiwei Zhang}\\
+		{\bf Due date: November 8, 2018}
+	\end{center}
+	
+	\noindent\emph{Jointly}: x hours
+	
+	\noindent \emph{Caihua Li (S01299500)}: y hours
+	
+	\noindent\emph{Zhiwei Zhang (S012990315)}:  z hours
+	
+	\bigskip
+	
+	\bigskip
+	
+	\noindent
+	
+	
+	
+	\bigskip
+	
+	\noindent
+	{\bf Note}: The pages below refer to the text from the book by
+	Enderton (pdf posted).
+	
+	\begin{enumerate}
+		\item
+		Exercises 1, 3-6 on p. 78.
+		
+		1)
+		\begin{enumerate}
+			\item $\forall x(N(x)\rightarrow <(0,x))$
+			\item $(\forall x(N(x)\rightarrow I(x)))\rightarrow I(0)$ or $\neg(\forall x(N(x)\rightarrow(\neg I(x))))\rightarrow I(0)$
+			\item $\forall x(N(x)\rightarrow\neg <(x,0))$
+			\item $\forall x((\neg I(x)\rightarrow(\forall y(<(y,x)\rightarrow I(y))))\rightarrow I(x))$
+			\item $\forall x(N(x)\rightarrow\neg(\forall y(N(y)\rightarrow <(y,x))))$
+			\item $\forall x(N(x)\rightarrow\neg(\forall y(N(y)\rightarrow\neg <(y,x))))$
+		\end{enumerate}
+		
+		3) 
+		$$
+			(\forall x. (E(x)\to A(x))) \to ((\forall y. (E(y))\to (\exists z. (A(z)\wedge (hy\approx hz))))
+		$$
+		
+		4)
+		\begin{enumerate}
+			\item $\neg\forall x(P(x)\rightarrow\neg\forall y(T(y)\rightarrow Fxy))$
+			\item $\forall x(P(x)\rightarrow\neg\forall y(T(y)\rightarrow\neg Fxy))$
+			\item $\neg\forall x(P(x)\rightarrow\forall y(T(y)\rightarrow Fxy))$
+		\end{enumerate}
+		
+		5)
+		
+		a) 
+		$$
+			\forall x. (J(x)\to \neg Dax)
+		$$
+		
+		b) Here we understand "can't do any" as "can't do every"
+		$$
+			\exists x. (J(x)\wedge \neg Dax)
+		$$
+		6) $\forall x(\neg\forall y(Lxy))$
+		
+		
+		\item
+		Exercises 1-6 on pp. 94-95.
+		
+		1)Z 
+		 
+		a)
+		
+		$"\Rightarrow"$: Suppose $\Gamma;\alpha\models \phi$. We have $ model(\Gamma;\alpha)=model(\Gamma)\cap model(\alpha)\subseteq model(\phi)$
+		
+		 For every $(A,\tau)\in model(\Gamma)$,
+		 
+		 \begin{itemize}
+		 	\item If $(A,\tau)\in \mathbb{U}-model(\alpha)$, where $\mathbb{U}$ is the universal set. Then we have $(A,\tau)\in((\mathbb{U}-model(\alpha))\cup model(\phi))=model(\alpha\to\phi)$, thus $\Gamma\models(\alpha\to\phi)$.
+		 	\item Else if $(A,\tau)\in models(\alpha)$, then $(A,\tau)\in model(\Gamma)\cap model(\alpha)\subseteq model(\phi)\subseteq ((\mathbb{U}-model(\alpha))\cup model(\phi))=model(\alpha\to\phi)$, thus $\Gamma\models(\alpha\to\phi)$. 
+		 \end{itemize}		
+		
+		
+		$"\Leftarrow"$:
+		Suppose $\Gamma\models(\alpha\to\phi)$,	
+		we have $model(\Gamma)\subseteq model(\alpha\to\phi)$, which means $model(\Gamma)\subseteq ((\mathbb{U}-model(\alpha))\cup model(\phi))$, where $\mathbb{U}$ is the universal sat. 
+		
+		For every $(A,\tau)\in model(\Gamma;\alpha)=model(\Gamma)\cap model(\alpha)$. We have $(A,\tau)\in model(\Gamma)$ and $ (A,\tau)\in model(\alpha)$.
+		
+		Since $(A,\tau)\in model(\Gamma)$, we have 
+		$$
+		(A,\tau)\in ((\mathbb{U}-model(\alpha))\cup model(\phi))
+		$$
+		\begin{itemize}
+			\item If  $(A,\tau)\in model(\phi)$, we have done because that means $model(\Gamma;\alpha)\subseteq model(\phi)$ and thus $\Gamma;\alpha\models \phi$.
+			\item Else if $(A,\tau)\in (\mathbb{U}-model(\alpha))$, this case is impossible because we have $(A,\tau)\in model(\alpha)$
+		\end{itemize}  
+		
+		b) Suppose we have $\phi \logequiv \psi$. Since $\phi\models \psi$, from a) we have $\models (\phi\to\psi)$. Similiarly we have $\models(\psi\to\phi)$. Therefore $\models(\phi\leftrightarrow\psi)$ holds.
+		
+		2) L
+		
+		3) for all 
+		$
+			(A,\tau)\models \{\forall x.(\alpha\to\beta),\forall x.\alpha\}
+		$ we have
+		
+		$$(A,\tau)\models \{\forall x.(\alpha\to\beta)\}
+		$$
+		and
+		$$(A,\tau)\models \{\forall x.\alpha\}.
+		$$
+		which mean
+		$$(A,\tau[x\to a])\models (\alpha\to\beta) \,for\,all\,a
+		$$
+		and 
+		$$(A,\tau[x\to b])\models \alpha \,for\,all\,b
+		$$
+		
+		Thus for all $c\in D$,
+		$$(A,\tau[x\to c])\models (\alpha\to\beta) 
+		$$
+		and 
+		$$(A,\tau[x\to c])\models \alpha 
+		$$
+		
+		Therefore for all $c\in D$,
+		$$(A,\tau[x\to c])\models\beta$$
+		
+		which is equalivant to
+		
+		$$(A,\tau)\models\forall x.\beta$$
+		4) Given a formula $\alpha$, define $$models(\alpha)=\{(A,a)\ |\ A,a\models\alpha\}$$ for every structures $A$ and every variable assignment $a$.\newline
+		Therefore, for every $(A,a)\in models(\alpha)$, $A,a\models\alpha$.\newline
+		According to relevance lemma, since $x\notin FVars(\alpha)$, which means that, for every value b, $a|_{FVars(\alpha)}=a[x\rightarrow b]|_{FVars(\alpha)}$ it follows that $$A,a[x\rightarrow b]\models\alpha$$ which is equivalent to $$A,a\models\forall x\alpha$$
+		So, we conclude that $$\alpha\models\forall x\alpha$$
+		
+		
+		5) For all $x,y$, assume $(x\approx y)$ holds, then 
+		$$(fx\approx fy)$$ is true and 
+		$$(Pzfx\leftrightarrow Pzfy)$$ holds and $(Pzfx\leftrightarrow Pzfy)$ is true. Therefore $$(x\approx y)\to Pzfx\to Pzfy$$ is valid.
+		
+		
+		6) Part 1: if $theta$ is valid, then $\forall x\theta$ is valid.\newline
+		
+		Part 2: if $\forall x\theta$ is valid, then $\theta$ is valid.\newline
+		
+		
+		\item
+		Exercises 8-12 on p. 95.
+		
+		8) 
+		\begin{itemize}
+			\item "$\Rightarrow$": Assume $\models_{\mathfrak{U}}\tau$ holds, in other words, $\mathfrak{U}\models \tau$. Proof by contradiction, if $\Sigma\models \neg\tau$, since $\mathfrak{U}\models\Sigma$, then $\mathfrak{U}\models \neg\tau$, which is a conflict. Since either $\Sigma\models\tau$ or $\Sigma\models\neg\tau$ holds, $\Sigma\models\tau$ is true.
+			\item Assume $\Sigma\models\tau$, since $\mathfrak{U}\models \Sigma$ we have $\models_{\mathfrak{U}}\tau$
+		\end{itemize}
+		$\Box$
+		
+		9) L
+		
+		10) Z
+		
+		$\models_{\mathfrak{U}}\forall v_2 Qv_1 v_2[c^{\mathfrak{U}}]$
+		
+		$\Leftrightarrow \mathfrak{U},\tau[v_1\to c^{\mathfrak{U}}]\models\forall v_2 Qv_1 v_2$
+		
+		$\Leftrightarrow \mathfrak{U},\tau[v_1\to c^{\mathfrak{U}},v_2\to a]\models Q v_1 v_2$ for all $a$
+		
+		$\Leftrightarrow \mathfrak{U},\tau[v_2\to a]\models Qcv_2$ for all $a$
+		
+		$\Leftrightarrow \mathfrak{U},\tau\models \forall v_2 Qcv_2$ 
+		
+		$\Leftrightarrow \models_{\mathfrak{U}} \forall v_2 Qcv_2$ (The right side is a sentence)
+		
+		 
+		11) L
+		
+		12) 
+		
+		a) $\exists x.(y\approx x\cdot x)$
+		
+		b) $(x\cdot x\approx x+x) \wedge (\neg( x\cdot x\approx x)) $
+		
+		c) 
+		We can represent the union of intervals whose endpoints are algebraic by a inequality.
+		
+		Suppose the unioned intervals are $[a_1,b_1],...,[a_k,b_k]$ where all $a_i$s and $b_i$s are algebraic. Then inequality:
+		
+		$$
+		\prod_{i=1}^k((x+(-a_i))\cdot(x+(-b_i)))\le0
+		$$
+		
+		define the union of intervals.
+		
+		Since $+,\cdot, \approx,0$ are already in the vocabulary of the languate, things left are how to define the algebraic real numbers $a_i$s and $b_i$s, how to define the binary relation $\le $ and unary function $-$. 
+		
+		\begin{itemize}
+			\item \textbf{neg(-)}: unary function $-$ is defined as $-(x)=y$ iff $y+x=0$
+			\item  \textbf{less than($\le $)}: binary relation $\le $ is defined as $x\le y$ iff $\exists w. \exists z.(( x+w\approx y)\wedge (w\approx z\cdot z))$
+			\item \textbf{algebraic real numbers}: Since  $a_i$s and $b_i$s are algebraic, WLOG for $a_i$ there exists an integer-coefficient polynomial $p(x)$ where $a_i$ is a zero point. Suppose $p(x)$ has $n$ distinct real zero points and $a_i$ is the $lth$ smallest one, then $a_i$ can be defined as the assignment of $x_l$ which satisfied the following formula:
+			
+			$$
+			\exists x_1,...,x_{n}. \bigwedge_{u\not=m}(\neg(x_u=x_m))\wedge (\bigwedge_{j=1}^{n}(p(x_j)\approx 0)\wedge
+			\bigwedge_{q=1}^{n-1}(x_q\le x_{q+1})
+			$$
+			
+			From Problem 11, we know that we are able to define all  integers by nesting successor relation. Thus we are able to define all the algebraic numbers. 
+		\end{itemize}
+		 Therefore, the union of intervals with algebraic endpoints are definable in  $\mathfrak{R}$.
+		 
+		 
+		{\sc Notation}:
+		\begin{itemize}
+			\item
+			$\Gamma;\alpha$ means $\Gamma\cup\{\alpha\}$
+			\item
+			$\models_A \varphi$ means $A\models\varphi$
+			\item
+			$\models_A \varphi(x)[a]$ means $A,[x\mapsto a] \models\varphi(x)$.
+			\item
+			$|A|$ refers to the domain of $A$.
+		\end{itemize}
+		\item
+		Z Exercise 17(a) on p. 96.
+		
+		\textbf{Proof Sketch.} We construct a formula $\phi$ which charactrizes the struct of $\mathfrak{U}$ thus it is satisfiable in $\mathfrak{U}$. Since in $\mathfrak{B}$, $\phi$  is also satisfiable, the assignment in struct $\mathfrak{B}$ will give us the bijection as isomorphism.
+		
+		\textbf{Proof.} We construct a formula $\phi$ which characterize the struct of $\mathfrak{U}$ as follows:
+		
+		variables of $\phi$: $x_1,x_2,...,x_{|D^\mathfrak{U}|+1}$
+		
+		Free variables of $\phi$: $x_1,x_2,...,x_{|D^\mathfrak{U}|}$
+		
+		$$
+	\phi=\bigwedge_{\substack{i\neq j;\\1\le i,j\le|D_\mathfrak{U}|}}(x_i\not \approx x_j)\wedge \bigwedge_{\substack{i\neq j;\\1\le i,j\le|D_\mathfrak{U}|}}\psi_{ij} \wedge (\neg \exists x_1,...,x_{|D^\mathfrak{U}+1|}. \bigwedge_{{\substack{i\neq j;\\1\le i,j\le|D_\mathfrak{U}|+1}}}(x_i\not \approx x_j))
+		$$
+
+  where atom formula $\psi_{ij}$ is defined as:
+  $$\psi_{ij}=
+  \begin{cases}
+  	Px_ix_j, \,if\,(c^{\mathfrak{U}}_i,c^{\mathfrak{U}}_j)\in P^{\mathfrak{U}}\\
+  	\neg	Px_ix_j, \,if\,(c^{\mathfrak{U}}_i,c^{\mathfrak{U}}_j)\not \in P^{\mathfrak{U}}
+  \end{cases}		
+  $$
+  
+  Since $\mathfrak{U}$ is finite, the formula $\phi$ is well defined.
+  
+  It clear that $\phi$ is satisfiable in $\mathfrak{U}$ by assigning $\tau(x_i)=c_i^{\mathfrak{U}}$ for every $x_i$ with $1\le i\le D^{|\mathfrak{U}|}$. Since $\mathfrak{U}\equiv\mathfrak{B}$, $\phi$ must be satisfiable in $\mathfrak{B}$, which means there exists an assignment $\tau: FV(\phi)\to D^{\mathfrak{B}}$ s.t. $(\mathfrak{B},\tau)\models\phi$. Let $I:D^{\mathfrak{U}}\to FV(\phi)$ be the bijection s.t. $I(x_i)=c^{\mathfrak{U}}_i$ and  $\tau'= \tau\cdot I$ be the composition of $I$ and $\tau$. We have $\tau':D_{\mathfrak{U}}\to D_{\mathfrak{B}}$
+  
+  
+  Next we will prove $\tau$ is the bijection from $D_{\mathfrak{U}}$ to $D_{\mathfrak{B}}$ s.t.:
+  
+  $$P^{\mathfrak{U}}(c_i^{\mathfrak{U}},c_j^{\mathfrak{U}})\,\Leftrightarrow\,P^{\mathfrak{B}}(\tau'(c_i^{\mathfrak{U}}),\tau'(c_j^{\mathfrak{U}}))$$
+  
+  which means $\mathfrak{U}$ is isomorphic to $\mathfrak{B}$.
+  
+  \textbf{bijection:} It's easy to see $I$ is a bijection. Thus we only need to prove $\tau$ is a bijection from $FV(\phi)$ to $D^{\mathfrak{B}}$. The subformula $\bigwedge_{\substack{i\neq j;\\1\le i,j\le|D_\mathfrak{U}|}}(x_i\not \approx x_j)$ of $\phi$ guarantees that $\tau$ is one-to-one. And subformula $\bigwedge_{\substack{i\neq j;\\1\le i,j\le|D_\mathfrak{U}|}}(x_i\not \approx x_j)$ and \\$(\neg \exists x_1,...,x_{|D^\mathfrak{U}+1|}. \bigwedge_{{\substack{i\neq j;\\1\le i,j\le|D_\mathfrak{U}|+1}}}(x_i\not \approx x_j)) $ together make $|D^{\mathfrak{B}}|=|D^{\mathfrak{U}}|=|FV(\phi)|$, which means $\tau$ is onto. Thus $\tau$ is a bijection.
+  
+  \textbf{maintenance of P on $\tau'$:} 
+  for all $1\le i,j\le |D^{\mathfrak{U}}|$ we have:
+  
+  $P^{\mathfrak{B}}(\tau'(c_i^{\mathfrak{U}}),\tau'(c_j^{\mathfrak{U}}))$\\
+  $\Leftrightarrow P^{\mathfrak{B}}(\tau(I(c_i^{\mathfrak{U}})),\tau I(c_j^{\mathfrak{U}})))$\\
+    $\Leftrightarrow P^{\mathfrak{B}}(\tau(x_i),\tau( x_j))$\\
+    $\Leftrightarrow \mathfrak{B},\tau\models P(x_i,x_j)$\\
+     $\Leftrightarrow P^{\mathfrak{U}}(c_i^{\mathfrak{U}},c_j^{\mathfrak{U}}))$ ($\mathfrak{B},\tau\models \bigwedge_{\substack{i\neq j;\\1\le i,j\le|D_\mathfrak{U}|}}\psi_{ij}$)
+     
+     Therefore, $\mathfrak{B}$ and $\mathfrak{U}$ are isomorphic.
+		\item
+		L Consider the following English sentences:
+		\begin{itemize}
+			\item
+			``There are some critics who admire only one another.''
+			\item
+			``It is not the case that there are some numbers among which none is
+			least''.
+		\end{itemize}
+		Can you formalize these sentences in first-order logic? How?
+		\item
+		ZL Show that the following formulas are valid,
+		where in (b)-(i) $x$ is not free in $\beta$.
+		Can the material implication ia (a) be reversed?
+		\begin{enumerate}
+			\item
+			$\forall x (\alpha \rightarrow \beta) \rightarrow
+			(\forall x \alpha \rightarrow \forall x \beta)$
+			\item
+			$\forall x (\alpha \wedge \beta) \leftrightarrow
+			(\forall x \alpha \wedge \beta)$
+			\item
+			$\exists x (\alpha \wedge \beta) \leftrightarrow
+			(\exists x \alpha \wedge \beta)$
+			\item
+			$\forall x (\alpha \vee \beta) \leftrightarrow
+			(\forall x \alpha \vee \beta)$
+			\item
+			$\exists x (\alpha \vee \beta) \leftrightarrow
+			(\exists x \alpha \vee \beta)$
+			
+			\item
+			$\forall x (\alpha \rightarrow \beta) \leftrightarrow
+			(\exists x \alpha \rightarrow \beta)$
+			
+			For a struct $A$ and an assigment $\tau$:
+			
+			$(A,\tau)\models\forall x (\alpha \rightarrow \beta)$
+			
+		$\Leftrightarrow (A,\tau[x\to a])\models(\alpha \rightarrow \beta)$ for all $a$.
+		
+		$\Leftrightarrow (A,\tau[x\to a])\models(\neg \alpha) \,or\, (A,\tau[x\to a])\models \beta$ for all $a$.
+		
+		$\Leftrightarrow (A,\tau[x\to a])\models(\neg \alpha) \,or\, (A,\tau)\models \beta$ for all $a$ ($x\not\in FV(\beta)$).
+		
+		$\Leftrightarrow (A,\tau)\models\neg(\exists x \alpha) \,or\, (A,\tau)\models \beta$ 
+		
+			$\Leftrightarrow (A,\tau)\models(\exists x \alpha\to  \beta)$ 
+		
+			\item
+			$\exists x (\alpha \rightarrow \beta) \leftrightarrow
+			(\forall x \alpha \rightarrow \beta)$
+			
+			$(A,\tau)\models\exists x (\alpha \rightarrow \beta)$
+			
+			$\Leftrightarrow (A,\tau[x\to a])\models(\alpha \rightarrow \beta)$ for some $a$.
+			
+			$\Leftrightarrow (A,\tau[x\to a])\models(\neg \alpha) \,or\, (A,\tau[x\to a])\models \beta$ for some $a$.
+			
+			$\Leftrightarrow (A,\tau[x\to a])\models(\neg \alpha) \,or\, (A,\tau)\models \beta$ for some $a$ ($x\not\in FV(\beta)$).
+			
+			$\Leftrightarrow (A,\tau)\models\neg(\forall x \alpha) \,or\, (A,\tau)\models \beta$ 
+			
+			$\Leftrightarrow (A,\tau)\models(\forall x \alpha\to  \beta)$ 
+			
+			\item
+			$\forall x (\beta \rightarrow \alpha) \leftrightarrow
+			(\beta \rightarrow \forall x \alpha)$
+			
+			$(A,\tau)\models (\forall x.(\beta\to\alpha))$
+			
+			$\Leftrightarrow (A,\tau[x\to a])\models(\beta\to\alpha)$ for all $a$.
+			
+			$\Leftrightarrow (A,\tau[x\to a])\models\neg\beta$ or $\Leftrightarrow (A,\tau[x\to a])\models \alpha$ for all $a$
+				
+				$\Leftrightarrow (A,\tau)\models\neg\beta$ or $ (A,\tau[x\to a])\models \alpha$ for all $a$ ($x\not\in FV(\beta)$)
+				
+					$\Leftrightarrow (A,\tau)\models\neg\beta$ or $ (A,\tau)\models \forall x.\alpha$ 
+					
+						$\Leftrightarrow (A,\tau)\models(\beta \rightarrow \forall x \alpha)$ 
+			\item
+			$\exists x (\beta \rightarrow \alpha) \leftrightarrow
+			(\beta \rightarrow \exists x \alpha)$
+			
+			$(A,\tau)\models \exists(\beta \rightarrow \alpha)$
+			
+			$\Leftrightarrow (A,\tau[x\to a])\models(\beta\to\alpha)$ for some $a$
+			
+			$\Leftrightarrow (A,\tau[x\to a])\models(\neg \beta)$ or $(A,\tau[x\to a])\models\alpha$ for some $a$
+			
+			$\Leftrightarrow (A,\tau)\models(\neg \beta)$ or $(A,\tau[x\to a])\models\alpha$ for some $a$	($x\not\in FV(\beta)$)
+			
+				$\Leftrightarrow (A,\tau)\models(\neg \beta)$ or $(A,\tau)\models\exists x.\alpha$	
+				
+					$\Leftrightarrow (A,\tau)\models (\beta\to\exists x\alpha)$
+		\end{enumerate}
+		\item
+		Z Assume a relational vocabulary (i.e., no function symbols).
+		For a sentence $\phi$ of 1st-order logic with equality,
+		let $\phi'$ be the result of replacing every atomic formula
+		$x=y$ in $\phi$ by $E(x,y)$, where $E$ is a new binary predicate
+		symbol, and then conjoining with the equivalence and congruence
+		axioms for $E$.
+		
+	
+		
+		(The equivalence axioms says that $E$ is reflexive, symmetric and
+		transitive. The congurence axioms says that
+		if $P(a_1,\ldots,a_k)$ holds and $E(a_i,b_i)$ holds
+		for $i=1,\ldots,k$, then $P(b_1,\ldots,b_k)$ holds.)
+		Show that $\phi$ is satisfiable iff $\phi'$ is satisfiable.
+		(Recall that a sentence is satisdfiable if it is satisfied by some
+		structure.) (Hint: You can use equivalence classes as elements.)
+		
+		
+			\begin{itemize}
+			\item "$\Rightarrow$": This is an easy direction. Suppose $\phi$ is satisfiable, then there exists $(A,\tau)$. Then consider  $A'$, which is obtained by adding the interpetation of $E^{A'}$ as the identity relationship $=$ . Note that identity is a binary relation with the equivalence and congruence axioms.  Also we can notice now $"="$ in $\phi$ and $"E"$ in $\phi'$ has the same interpetation  and so do other symbols. Thus $(A',\tau')\models \phi'$, which means $\phi'$ is satisfiable.
+			\item "$\Leftarrow$": Since it is not obvious to use induction on sentences, we will prove a stronger result about formula, other than sentences. Then  the statement about sentence will be a corollary of it.
+			
+			\textbf{Lemma 1.} Let $\phi$ be an formula of relational vocabulary with predicate symbols and equality and $\phi'$ is obtained by replacing every atomic formula $x=y$ in $\phi$.
+			Suppose $\phi'$ is satisfiable on $A_E$. Then for every $\tau_E$, 
+			  $$(A_E,\tau_E)\models \phi'\, \Leftrightarrow (A_{=},\tau_=)\models\phi$$
+			  where $A_{=},\tau_=$ is defined as:
+			
+			$D_{A_=}=\{e_1,...,e_k\}$ is consisted of the equivalence classes of $D_{A_E}$.
+			
+			For every relation $P_i^=$ with arity $k_i$,
+			
+			$P_i^{A=}(e_1,...,e_{k_i})$ iff $(\exists c_1,...,c_k\in D_{A_E}. P^E(c_1,...,c_k)\wedge \bigwedge_{j=1}^{k_i}(c_j\in e_j))$ (*)
+			
+			$\tau_=(x)=e(\tau_E(x))$, where $e(\tau_E(x))$ donotes the equivalent class of $\tau_E(x)$. \\
+		
+		
+		If Lemma 1 holds, then $\phi'$ is satisfiable implies $\phi$ is satisfiable will follow. Since sentences are special formulas, the statement will hold. Next we will prove Lemma 1, which completes our proof.
+			
+			\bigskip
+		\textbf{Proof of Lemma 1.}
+		
+		We will prove by induction on $\phi'$.
+		
+		\begin{itemize}
+			\item Basis:
+			\begin{itemize}
+				\item $\phi'$ is $E(x,y)$. In this case $\phi$ is $x=y$. 
+				\begin{itemize}
+					\item If $A_E,\tau_E\models E(x,y)$. Then we know $\tau_E(x)$ and $\tau_E(y)$ are in the same equivalent class. Thus $e(\tau_E(x))=e(\tau_E(y))$ holds, which means $\tau_=(x)=\tau_=(y)$ and $A_=,\tau_=\models \phi $.
+					\item If $e(\tau_E(x))=e(\tau_E(y))$, $\tau_E(x)$ and $\tau_E(y)$ are in the same equivalent class, then $A_E,\tau_E\models E(x,y)$ holds.
+				\end{itemize}
+				\item $\phi'$ is a $k_i$-arity predicate $P(x_1,...,x_{k_i})$.
+				\begin{itemize}
+					\item If $A_E,\tau_E\models P(x_1,...,x_{k_i})$, which means there exist $c_1,...,c_k\in D_{A_E}$ where $c_i=\tau_E(x)$ for every $i$, s.t. $P(c_1,...,c_k)$ is true. Thus $P_{A_=}(e(c_1),...,e(c_k))$ from (*). Since $\tau_=(x)=e(\tau_E(x))$, that means $A_=,\tau_=\models \phi$ 
+					\item If $A_=,\tau_=\models P(x_1,...,x_k)$. Then by (*) we know there exist $c_1,...c_k \in D_{A_E}$ s.t. $P^E(c_1,...,c_k)$ and $e(c_j)=e(\tau_E(x))$, in other words, $E(c_j,\tau_E(x))$ is true.
+					Since we have congruence axiom for $E$, $P^E(\tau_E(x_1),...,\tau_E(x_k))$ holds, which means $A_E,\tau_E\models \phi'$.
+				\end{itemize} 
+			\end{itemize}
+		\item Inductive Step: (For simplicity we just consider binary connective $\wedge$ since $\{\neg,\wedge\}$ is adequate)
+		\begin{itemize}
+			\item $\phi'$ is $\neg \psi'$\\
+				For all $\tau_E$, we have\\
+				$A_E,\tau_E\models \phi'$\\
+				$\Leftrightarrow A_E,\tau_E\not\models \psi'$\\
+				$\Leftrightarrow A_=,\tau_=\not\models \psi$ (I.H.)\\
+				$\Leftrightarrow A_=,\tau_=\models \neg\psi$ \\
+				$\Leftrightarrow A_=,\tau_=\models \phi$
+			\item $\phi'$ is $\psi'_1\circ\psi'_2$\\
+			For all $\tau_E$ we have\\
+				$A_E,\tau_E\models \phi'$\\
+			$\Leftrightarrow A_E,\tau_E\models\psi'_1\wedge\psi'_2$\\
+			$\Leftrightarrow A_=,\tau_=\models\psi_1$ and $ A_=,\tau_=\models\psi_2$ (I.H.)\\
+			$\Leftrightarrow A_=,\tau_=\models \psi_1\wedge\psi_2$ \\
+			$\Leftrightarrow A_=,\tau_=\models \phi$
+			\item $\phi'$ is $\exists x. \psi'$\\
+			For all $\tau_E$ we have\\
+				$A_E,\tau_E\models \phi'$\\
+					$\Leftrightarrow A_E,\tau_E\models \exists x.\psi'$\\
+						$\Leftrightarrow A_E,\tau_E[x\to a]\models \psi'$ for some $a\in D_{A_E}$\\
+							$\Leftrightarrow A_=,\tau_=[x\to e(a)]\models \psi$ for some $a\in D_{A_E}$ (I.H.)\\
+								$\Leftrightarrow A_=,\tau_=[x\to b]\models \psi$ for some $b\in D_{A_=}$\\
+								$\Leftrightarrow A_=,\tau_=\models \exists x.\psi$\\
+									$\Leftrightarrow A_=,\tau_=\models \phi$\\
+			\item $\phi'$ is $\forall x. \psi'$
+				$A_E,\tau_E\models \phi'$\\
+				$\Leftrightarrow A_E,\tau_E\models \forall x.\psi'$\\
+				$\Leftrightarrow A_E,\tau_E[x\to a]\models \psi'$ for all $a\in D_{A_E}$\\
+				$\Leftrightarrow A_=,\tau_=[x\to e(a)]\models \psi$ for all $a\in D_{A_E}$ (I.H.)\\
+				$\Leftrightarrow A_=,\tau_=[x\to b]\models \psi$ for all $b\in D_{A_=}$\\
+				$\Leftrightarrow A_=,\tau_=\models \forall x.\psi$\\
+				$\Leftrightarrow A_=,\tau_=\models \phi$\\
+		\end{itemize}
+		\end{itemize}
+		$\Box$ 
+		\end{itemize}
+	
+		\item
+		L An {\em existential-conjunctive\/} formula is a formula of the form
+		$(\exists x_1) \ldots (\exists x_n) \bigwedge_{i=1}^k \alpha_i$,
+		where each $\alpha_i$ is an atomic formula. What is the complexity
+		(data and query complexity) of evaluating existential-conjunctive queries? 
+		(Focus on upper bounds.)
+		
+		Consider a vocabulary of one binary relation symbol ${\bf R}$.
+		Let $A=(D,R)$ be a structure with $D=\{1,2,3\}$ and
+		$R=\{\langle 1,2\rangle,
+		\langle 2,1\rangle,
+		\langle 1,3\rangle,
+		\langle 3,1\rangle,
+		\langle 2,3\rangle,
+		\langle 3,2\rangle\}$.
+		With each graph $G=(V,E)$ we associate a sentence $\varphi_G$ as
+		follows. Let $V=\{v_1,\ldots,v_n\}$. Then $\varphi_G$ is
+		$$ (\exists x_1) \ldots (\exists x_n) 
+		\bigwedge_{(v_i,v_j)\in E} R(x_i,x_j).$$
+		(Note that $\varphi_G$ is an existential-conjunctive formula.)
+		Show that $A \models \varphi_G$ iff $G$ is 3-colorable.
+		What can you conclude from this about the complexity
+		of evaluating existential-conjunctive queries? 
+		(Discuss upper and lower bounds.)
+		\item
+		Z {\sf Drinker's Principle}: ``In every group of people one can
+		point to one person in the group such that if that person drinks then
+		all the people in the group drink.''
+		
+		Formulate this principle in first-order logic and prove its validity.
+		
+		\textbf{Solution:}
+		
+		$$
+		\exists x. (D(x)\to(\forall y.(D(y))))
+		$$
+		
+		Proof of validity:
+		
+		for all $(A,\tau)$,
+		
+		$$
+		(A,\tau)\models \exists x. (D(x)\to(\forall y.(D(y))))
+		$$
+		
+		iff 
+		
+		$$
+		(A,\tau[x\to a])\models  (D(x)\to(\forall y.(D(y))))
+		$$
+		
+		for some $a$
+		
+		iff
+		
+		$$
+		(A,\tau[x\to a])\models \neg D(x)
+		\,or\,
+		(A,\tau)\models \forall y.(D(y))
+		$$
+		for some $a$
+		
+		If $(A,\tau[x\to a])\models \neg D(x)$ for some $a$ holds, then we have done. Else it means $(A,\tau[x\to a])\models D(x)$ for all $a$ is true, which is equivalent to $	(A,\tau)\models \forall y.(D(y))$ is true. $\Box$
+	\end{enumerate}
+\end{document}

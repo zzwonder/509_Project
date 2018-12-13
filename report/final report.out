@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Implentation Details}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Converting Recursive to Iteration}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Fast Unit Propogation}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Variable Picking Strategies}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Expirical Result}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Probability of Satisfability}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Running time and number of DPLL calls}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Random vs BOHM}{subsection.2.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Two-Occur vs BOHM}{subsection.2.2}% 9
+\BOOKMARK [1][-]{section.3}{Result Analysis}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Influence of L/N}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Comparasion of Different Heursitics}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.1}{BOHM vs Random}{subsection.3.2}% 13
+\BOOKMARK [3][-]{subsubsection.3.2.2}{BOHM vs 2-Occur}{subsection.3.2}% 14
+\BOOKMARK [1][-]{section.4}{Summary}{}% 15
+\BOOKMARK [1][-]{section.5}{What I Learned From the Project}{}% 16
